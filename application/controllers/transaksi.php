@@ -140,4 +140,19 @@ class Transaksi extends CI_Controller
         $this->load->view('transaksi/detail', $data);
         $this->load->view('templates/footer');
     }
+
+    public function printbyid($invoice)
+    {
+        $data['judul'] = 'Kwitansi Transaksi';
+        $data['detail'] = $this->modelaporan->detailbyid($invoice)->row_array();
+        $data['detail_transaksi'] = $this->modelaporan->detailid($invoice)->result_array();
+        $data['d_transaksi'] = $this->modelaporan->detailid($invoice)->num_rows();
+        $this->load->library('pdf');
+        $paper_size = 'A6'; // ukuran kertas
+        $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+        $this->pdf->set_paper($paper_size, $orientation);
+        $this->pdf->filename = "kwitansi-transaksi-$invoice.pdf";
+        // nama file pdf yang di hasilkan
+        $this->pdf->load_view('transaksi/kwitansi', $data);
+    }
 }
