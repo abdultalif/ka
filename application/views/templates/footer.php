@@ -1,0 +1,316 @@
+<!-- Modal Kategori -->
+<div class="modal fade" id="Modalkategori" tabindex="-1" aria-labelledby="newStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newStudentModalLabel">Daftar Kategori</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tabelkategori" class="table table-bordered table-hover table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kategori</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($kategori as $k) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $k['nama_kategori']; ?></td>
+                                <td>
+                                    <button class="badge badge-info" id="btnkategori" data-id_kategori="<?= $k['id_kategori']; ?>" data-kategori="<?= $k['nama_kategori']; ?>"><i class="fa fa-check"></i> Pilih</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<!-- Modal Satuan -->
+<div class="modal fade" id="Modalsatuan" tabindex="-1" aria-labelledby="newStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newStudentModalLabel">Daftar Satuan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tabelsatuan" class="table table-bordered table-hover table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kategori</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($satuan as $s) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $s['satuan']; ?></td>
+                                <td>
+                                    <button id="satuan" class="badge badge-info" data-id_satuan="<?= $s['id_satuan']; ?>" data-satuan="<?= $s['satuan']; ?>"><i class="fa fa-check"></i> Pilih</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white mt-5">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; <a href="https://www.instagram.com/abdullt85/" target="blank">Abdul Talif Parinduri</a> 2021</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<!-- Bootstrap core JavaScript-->
+<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="<?= base_url('assets/'); ?>vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= base_url('assets/'); ?>js/demo/chart-bar-demo.js"></script>
+
+<!-- Page level plugins -->
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+
+<script>
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Barang Masuk", "Barang Keluar"],
+            datasets: [{
+                data: [<?= $barang_masuk; ?>, <?= $barang_keluar; ?>],
+                backgroundColor: ['#1cc88a', '#e74a3b'],
+                hoverBackgroundColor: ['#17a673', '#a13228'],
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
+            }],
+        },
+        options: {
+            maintainAspectRatio: false,
+            tooltips: {
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
+                borderColor: '#dddfeb',
+                borderWidth: 1,
+                xPadding: 15,
+                yPadding: 15,
+                displayColors: false,
+                caretPadding: 10,
+            },
+            legend: {
+                display: false
+            },
+            cutoutPercentage: 80,
+        },
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#tabelkategori').DataTable();
+    });
+
+    $(document).ready(function() {
+        $('#tabeltransaksi').DataTable();
+    });
+
+    $(document).ready(function() {
+        $('#tabelsatuan').DataTable();
+    });
+
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+
+    $(document).ready(function() {
+        $('#tabelsupplier').DataTable();
+    });
+
+
+    $(document).ready(function() {
+        $(document).on('click', '#tambahsupp', function() {
+            var id_supplier = $(this).data('id_supplier');
+            var supplier = $(this).data('supplier');
+            $('#id_supplier').val(id_supplier);
+            $('#supplier').val(supplier);
+            $('#datasupplier').modal('hide');
+        })
+    })
+
+    $(document).ready(function() {
+        $(document).on('click', '#btnkategori', function() {
+            var id_kategori = $(this).data('id_kategori');
+            var kategori = $(this).data('kategori');
+            $('#id_kategori').val(id_kategori);
+            $('#kategori').val(kategori);
+            $('#Modalkategori').modal('hide');
+        })
+    })
+
+    $(document).ready(function() {
+        $(document).on('click', '#satuan', function() {
+            var id_satuan = $(this).data('id_satuan');
+            var satuan = $(this).data('satuan');
+            $('#id_satuan').val(id_satuan);
+            $('#satuan').val(satuan);
+            $('#Modalsatuan').modal('hide');
+        })
+    })
+
+    $(document).ready(function() {
+        $(document).on('click', '#detail', function() {
+            var id_masuk = $(this).data('id_masuk');
+            var nama = $(this).data('nama');
+            var user = $(this).data('user');
+            var barang = $(this).data('barang');
+            var jumlah_masuk = $(this).data('jumlah_masuk');
+            var harga = $(this).data('harga');
+            var total_harga = $(this).data('total_harga');
+            var tanggal_masuk = $(this).data('tanggal_masuk');
+            $('#id_masuk').text(id_masuk);
+            $('#nama').text(nama);
+            $('#user').text(user);
+            $('#barang').text(barang);
+            $('#jumlah_masuk').text(jumlah_masuk);
+            $('#harga').text(harga);
+            $('#total_harga').text(total_harga);
+            $('#tanggal_masuk').text(tanggal_masuk);
+        })
+    })
+
+
+    $(document).ready(function() {
+        $(document).on('click', '#detailpen', function() {
+            var invoice = $(this).data('invoice');
+            var pelanggan = $(this).data('pelanggan');
+            var tanggal = $(this).data('tanggal');
+            var kasir = $(this).data('kasir');
+            var total = $(this).data('total');
+            var bayar = $(this).data('bayar');
+            var kembalian = $(this).data('kembalian');
+            var id_barang = $(this).data('id_barang');
+            var barang = $(this).data('barang');
+            var harga = $(this).data('harga');
+            var jml = $(this).data('jml');
+            var satuan = $(this).data('satuan');
+            $('#invoice').text(invoice);
+            $('#pelanggan').text(pelanggan);
+            $('#tanggal').text(tanggal);
+            $('#kasir').text(kasir);
+            $('#total').text(total);
+            $('#bayar').text(bayar);
+            $('#kembalian').text(kembalian);
+            $('#id_barang').text(id_barang);
+            $('#barang').text(barang);
+            $('#harga').text(harga);
+            $('#jml').text(jml);
+            $('#satuan').text(satuan);
+        })
+    })
+
+    $(document).ready(function() {
+        $(document).on('click', '#select', function() {
+            var id_barang = $(this).data('id');
+            var barang = $(this).data('barang');
+            var stok = $(this).data('stok');
+            var satuan = $(this).data('satuan')
+            $('#id_barang').val(id_barang);
+            $('#barang').val(barang);
+            $('#stok').val(stok);
+            $('#total_stok').val(stok);
+            $('#satuan').html(satuan);
+            $('.bd-example-modal-lg').modal('hide');
+        })
+    })
+
+
+    function tambah_stok() {
+        var jumlah_masuk = document.getElementById('jumlah_masuk').value;
+        var stok = document.getElementById('stok').value;
+        var tambah = parseInt(jumlah_masuk) + parseInt(stok);
+
+        if (!isNaN(tambah)) {
+            document.getElementById('total_stok').value = tambah;
+        }
+    }
+
+    function kurang_stok() {
+        var jumlah_keluar = document.getElementById('jumlah_keluar').value;
+        var stok = document.getElementById('stok').value;
+        var tambah = parseInt(stok) - parseInt(jumlah_keluar);
+
+        if (!isNaN(tambah)) {
+            document.getElementById('total_stok').value = tambah;
+        }
+    }
+
+    function transaksi() {
+        var total = document.getElementById('total').value;
+        var bayar = document.getElementById('bayar').value;
+        var kurang = parseInt(bayar) - parseInt(total);
+
+        if (!isNaN(kurang)) {
+            document.getElementById('kembali').value = kurang;
+        }
+    }
+</script>
+
+</body>
+
+</html>
