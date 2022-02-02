@@ -24,23 +24,23 @@
                     </thead>
                     <tbody>
                         <?php
-                            $no = 1;
-                            foreach ($barang_k as $k) {
+                        $no = 1;
+                        foreach ($barang_k as $k) {
                         ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $k['id_keluar']; ?></td>
-                            <td><?= $k['barang']; ?></td>
-                            <td><?= $k['jumlah_keluar']; ?></td>
-                            <td><?= $k['keterangan']; ?></td>
-                            <td><?= $k['tanggal_keluar']; ?></td>
-                            <td><?= $k['user']; ?></td>
-                            <td>
-                                <a href="<?= base_url('stok/hapus_keluar/') . $k['id_keluar'] . '/' . $k['id_barang']  ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $k['barang']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $k['id_keluar']; ?></td>
+                                <td><?= $k['barang']; ?></td>
+                                <td><?= $k['jumlah_keluar']; ?></td>
+                                <td><?= $k['keterangan']; ?></td>
+                                <td><i class="fa fa-calendar-alt"></i> <?= $k['tanggal_keluar']; ?></td>
+                                <td><?= $k['user']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('stok/hapus_keluar/') . $k['id_keluar'] . '/' . $k['id_barang']  ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $k['barang']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
+                                </td>
+                            </tr>
                         <?php
-                            }
+                        }
                         ?>
                     </tbody>
                 </table>

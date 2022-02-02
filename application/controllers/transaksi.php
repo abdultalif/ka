@@ -17,6 +17,7 @@ class Transaksi extends CI_Controller
         $data['penjualan'] = $this->modeltransaksi->getpenjualan()->result_array();
         $data['pelanggan'] = $this->ModelCrud->getpelanggan()->result_array();
         $data['transaksi'] = $this->modelaporan->transaksi()->result_array();
+        $data['barang'] = $this->ModelCrud->getbarang()->result_array();
 
         $data['cari'] = '';
         if ($this->input->get('keyword')) {
@@ -124,9 +125,22 @@ class Transaksi extends CI_Controller
             $this->modeltransaksi->simpan($data);
             $this->modeltransaksi->simpanDetail($invoice);
             $this->modeltransaksi->hapus();
-            redirect('transaksi');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Transaksi Sukses<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('transaksi/selesai');
         }
     }
+
+    public function selesai()
+    {
+        $data['judul'] = 'Transaksi Selesai';
+        $data['user'] = $this->ModelUser->cekData(['role_id' => $this->session->userdata('role_id')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('transaksi/selesai', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function detail($id)
     {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();

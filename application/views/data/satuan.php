@@ -31,19 +31,19 @@
                     </tfoot>
                     <tbody>
                         <?php
-                            $no = 1;
-                            foreach ($satuan as $s) {
+                        $no = 1;
+                        foreach ($satuan as $s) {
                         ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $s['satuan']; ?></td>
-                            <td>    
-                                <button data-toggle="modal" data-target="#editsatuan<?= $s['id_satuan']; ?>" class="badge badge-warning fa fa-edit">Ubah</button>
-                                <a href="<?= base_url('data/hapussat/') . $s['id_satuan']; ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $s['satuan']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $s['satuan']; ?></td>
+                                <td>
+                                    <button type="submit" data-toggle="modal" data-target="#editsatuan<?= $s['id_satuan']; ?>" class="badge badge-warning fa fa-edit">Ubah</button>
+                                    <a href="<?= base_url('data/hapussat/') . $s['id_satuan']; ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $s['satuan']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
+                                </td>
+                            </tr>
                         <?php
-                            }
+                        }
                         ?>
                     </tbody>
                 </table>
@@ -82,32 +82,32 @@
 
 <?php foreach ($satuan as $s) {
 ?>
-<!-- Modal Edit -->
-<div class="modal fade" id="editsatuan<?= $s['id_satuan']; ?>" tabindex="-1" aria-labelledby="newStudentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newStudentModalLabel">Edit Satuan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    <!-- Modal Edit -->
+    <div class="modal fade" id="editsatuan<?= $s['id_satuan']; ?>" tabindex="-1" aria-labelledby="newStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newStudentModalLabel">Edit Satuan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('data/ubahsatuan'); ?>" method="post">
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <input type="hidden" name="id" value="<?= $s['id_satuan']; ?>">
+                            <input type="text" name="satuan" class="form-control" value="<?= $s['satuan']; ?>">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-warning">Ubah</button>
+                </div>
+                </form>
             </div>
-            <div class="modal-body">
-                <form action="<?= base_url('data/ubahsatuan'); ?>" method="post">
-                    <div class="form-group">
-                        <label>Kategori</label>
-                        <input type="hidden" name="id" value="<?= $s['id_satuan']; ?>">
-                        <input type="text" name="satuan" class="form-control" value="<?= $s['satuan']; ?>">
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-warning">Ubah</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
 <?php
-} 
+}
 ?>

@@ -182,6 +182,10 @@
         $('#tabelsupplier').DataTable();
     });
 
+    $(document).ready(function() {
+        $('#databarang').DataTable();
+    });
+
 
     $(document).ready(function() {
         $(document).on('click', '#tambahsupp', function() {

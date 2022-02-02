@@ -11,7 +11,7 @@ class modelaporan extends CI_Model
 
     public function transaksi()
     {
-        $this->db->select('*');
+        $this->db->select('invoice, total, bayar, nama, user, waktu, date_format(tanggal,"%d %M %Y") as tanggal, transaksi.id_pelanggan, pelanggan.id_pelanggan, transaksi.id_user, user.id_user');
         $this->db->from('transaksi');
         $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan');
         $this->db->join('user', 'transaksi.id_user = user.id_user');
@@ -21,7 +21,7 @@ class modelaporan extends CI_Model
 
     public function detailbyid($id)
     {
-        $this->db->select('*');
+        $this->db->select('total, bayar, nama, user, waktu, kembalian, date_format(tanggal,"%d %M %Y") as tanggal, transaksi.id_pelanggan, pelanggan.id_pelanggan, transaksi.id_user, user.id_user, detail_transaksi.invoice, transaksi.invoice');
         $this->db->from('transaksi');
         $this->db->join('user', 'user.id_user = transaksi.id_user');
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan');

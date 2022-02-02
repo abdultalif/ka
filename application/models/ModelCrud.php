@@ -80,7 +80,7 @@ class ModelCrud extends CI_Model
 
     public function getbarang()
     {
-        $sql = "SELECT * FROM barang INNER JOIN kategori ON barang.id_kategori = kategori.id_kategori INNER JOIN satuan ON barang.id_satuan = satuan.id_satuan";
+        $sql = "SELECT * FROM barang INNER JOIN kategori ON barang.id_kategori = kategori.id_kategori INNER JOIN satuan ON barang.id_satuan = satuan.id_satuan ORDER BY id_barang DESC";
         return $this->db->query($sql);
     }
 

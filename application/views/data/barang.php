@@ -12,7 +12,7 @@
                 </div>
             <?php endif; ?>
             <?= $this->session->flashdata('pesan'); ?>
-            <button data-toggle="modal" data-target="#addbarang" class="btn btn-primary mb-3">Tambah Barang </button>
+            <button data-toggle="modal" data-target="#addbarang" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Barang </button>
             <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -29,26 +29,26 @@
                     </thead>
                     <tbody>
                         <?php
-                            $total = 0;
-                            $no = 1;
-                            foreach ($barang as $b) {
-                                $total += $b['stok'];
+                        $total = 0;
+                        $no = 1;
+                        foreach ($barang as $b) {
+                            $total += $b['stok'];
                         ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $b['id_barang']; ?></td>
-                            <td><?= $b['barang']; ?></td>
-                            <td><?= $b['nama_kategori']; ?></td>
-                            <td>Rp. <?= number_format($b['harga']); ?></td>
-                            <td><?= $b['stok']; ?></td>
-                            <td><?= $b['satuan']; ?></td>
-                            <td>    
-                                <a href="<?= base_url('data/ubahbarang/') . $b['id_barang']; ?>" class="badge badge-secondary"><i class="fa fa-edit"></i> Ubah</a>
-                                <a href="<?= base_url('data/hapusbarang/') . $b['id_barang']; ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $b['barang']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $b['id_barang']; ?></td>
+                                <td><?= $b['barang']; ?></td>
+                                <td><?= $b['nama_kategori']; ?></td>
+                                <td>Rp. <?= number_format($b['harga']); ?></td>
+                                <td><?= $b['stok']; ?></td>
+                                <td><?= $b['satuan']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('data/ubahbarang/') . $b['id_barang']; ?>" class="badge badge-secondary"><i class="fa fa-edit"></i> Ubah</a>
+                                    <a href="<?= base_url('data/hapusbarang/') . $b['id_barang']; ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $b['barang']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
+                                </td>
+                            </tr>
                         <?php
-                            }
+                        }
                         ?>
                     </tbody>
                     <tfoot>
@@ -78,31 +78,36 @@
             <div class="modal-body">
                 <form action="<?= base_url('data/barang'); ?>" method="post">
                     <div class="form-group">
+                        <label>Kode Barang</label>
                         <input type="text" name="id" class="form-control" readonly value="<?= $id; ?>">
                     </div>
                     <div class="form-group">
+                        <label>Nama Barang</label>
                         <input type="text" name="nama" class="form-control" placeholder="Masukan Barang">
                     </div>
-                    <div class="form-group row">
-                        <div class="col-10">
+                    <div class="form-group">
+                        <label for="">Kategori</label>
+                        <div class="input-group">
                             <input type="hidden" name="id_kategori" id="id_kategori">
                             <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Pilih Kategori" readonly>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#Modalkategori">Cari</button>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input type="hidden" name="id_satuan" id="id_satuan">
-                            <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Pilih Satuan" readonly>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#Modalsatuan">Cari</button>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modalkategori"><i class="fa fa-search"></i></button>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="harga" class="form-control" placeholder="Masukan Harga">
+                        <label for="">Satuan</label>
+                        <div class="input-group">
+                            <input type="hidden" name="id_satuan" id="id_satuan">
+                            <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Pilih Satuan" readonly>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modalsatuan"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" name="harga" class="form-control" placeholder="Harga Jual">
                     </div>
             </div>
             <div class="modal-footer">
@@ -113,20 +118,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

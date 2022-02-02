@@ -5,7 +5,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-success"><i class="fa fa-search"></i> Cari Barang</h6>
+                    <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-search"></i> Cari Barang</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -21,7 +21,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-success"><i class="fa fa-list"></i> Hasil Pencarian</h6>
+                    <h6 class="m-0 font-weight-bold text-dark"><i class="fa fa-list"></i> Hasil Pencarian</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -75,7 +75,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('transaksi/hapus') ?>" class="btn btn-danger float-right mb-3">RESET KERANJANG</a>
+            <a href="<?= base_url('transaksi/hapus') ?>" class="btn btn-danger float-right ml-1"><i class="fa fa-trash-alt"></i> Reset Keranjang</a>
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-search"></i> Daftar Barang</button>
             <h5 class="m-0 font-weight-bold text-dark"><i class="fa fa-shopping-cart"></i> Keranjang Belanjaan</h5>
         </div>
         <div class="card-body">
@@ -183,7 +184,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mt-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-success text-center">Riwayat Transaksi</h5>
+            <h5 class="m-0 font-weight-bold text-dark text-center">Riwayat Transaksi</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -221,7 +222,7 @@
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $f['invoice']; ?></td>
-                                    <td><i class="fa fa-calendar-alt"></i> <?= $f['tanggal']; ?>, <?= $f['waktu'] ?></td>
+                                    <td><i class="fa fa-calendar-alt"></i> <?= $f['tanggal']; ?> <?= $f['waktu'] ?></td>
                                     <td><?= $f['nama']; ?></td>
                                     <td>Rp. <?= number_format($f['total']); ?></td>
                                     <td>Rp. <?= number_format($f['bayar']); ?></td>
@@ -237,6 +238,59 @@
                         ?>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal Barang -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newStudentModalLabel">Pilih Barang Yang Ingin Di Beli</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped text-center" id="databarang" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kode Barang</th>
+                                <th>Nama Barang</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
+                                <th>Satuan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($barang as $b) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $b['id_barang']; ?></td>
+                                    <td><?= $b['barang']; ?></td>
+                                    <td><?= $b['nama_kategori']; ?></td>
+                                    <td>Rp. <?= number_format($b['harga']); ?></td>
+                                    <td><?= $b['stok']; ?></td>
+                                    <td><?= $b['satuan']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('transaksi/add/') . $b['id_barang']; ?>" id="select" class="btn btn-success btn-sm"><i class="fa fa-cart-plus"></i> Beli</a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 04:28 PM
+-- Generation Time: Feb 02, 2022 at 10:10 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -41,13 +41,13 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`, `stok`) VALUES
-('DB-21102901', 'Komik One Piece Volume 96', 7, 1, '20000', 62),
+('DB-21102901', 'Komik One Piece Volume 96', 7, 1, '20000', 60),
 ('DB-21102902', 'Lifeboy', 11, 1, '3000', 20),
 ('DB-21102903', 'Teh Gelas', 10, 10, '18000', 9),
-('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 2),
+('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 1),
 ('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 29),
 ('DB-21103103', 'Teh Sari Wangi', 10, 7, '10000', 6),
-('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 7),
+('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 5),
 ('DB-21103105', 'Evo Diplomat Biru 16btng - 10bks', 12, 9, '80500', 2),
 ('DB-21103106', 'Redmi 10 6/128', 5, 2, '2500000', 20),
 ('DB-21103107', 'Lenovo Ideapad S145', 1, 2, '5700000', 3),
@@ -62,7 +62,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 7),
 ('DB-21111505', 'GGF Filter 12btng 20bks', 12, 13, '374000', 15),
 ('DB-21111506', 'Indomie Goreng Rendang 40 bks', 9, 10, '110000', 4),
-('DB-21111507', 'Ultra Milk 24x200ml Coklat', 10, 10, '120000', 0),
+('DB-21111507', 'Ultra Milk 24x200ml Coklat', 10, 10, '120000', 12),
 ('DB-21111508', 'Envio Kretek 12btng -10bks', 12, 13, '91000', 0),
 ('DB-21111801', 'pop mie', 9, 10, '300000', 6),
 ('DB-21111802', 'Envio Kretek 12btng', 12, 8, '16000', 16),
@@ -144,7 +144,8 @@ INSERT INTO `barang_masuk` (`id_masuk`, `id_supplier`, `id_user`, `id_barang`, `
 ('A-TP-21120601011', 7, 1, 'DB-21111501', '10', 18000, 180000, '2021-12-06'),
 ('A-TP-21122001011', 2, 1, 'DB-21102902', '2', 22000, 44000, '2021-12-20'),
 ('A-TP-21123101011', 2, 1, 'DB-21123101', '20', 20000, 400000, '2021-12-31'),
-('A-TP-22011301011', 2, 1, 'DB-21111802', '16', 14000, 224000, '2022-01-13');
+('A-TP-22011301011', 2, 1, 'DB-21111802', '16', 14000, 224000, '2022-01-13'),
+('A-TP-22020201011', 2, 1, 'DB-21111507', '12', 100000, 1200000, '2022-02-02');
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,22 @@ INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, 
 (36, 'PY-22011401011', 'DB-21103104', 1, 2, 32000),
 (37, 'PY-22011401011', 'DB-21103102', 1, 1, 23000),
 (39, 'PY-22011401012', 'DB-21102901', 1, 3, 60000),
-(40, 'PY-22011401012', 'DB-21111502', 1, 1, 45000);
+(40, 'PY-22011401012', 'DB-21111502', 1, 1, 45000),
+(41, 'PY-22013001011', 'DB-21103105', 1, 1, 80500),
+(42, 'PY-22020201011', 'DB-21103104', 1, 2, 32000),
+(43, 'PY-22020201011', 'DB-21103101', 1, 1, 1500),
+(45, 'PY-22020201012', 'DB-21102901', 1, 2, 40000);
+
+--
+-- Triggers `detail_transaksi`
+--
+DELIMITER $$
+CREATE TRIGGER `transaksi_penjualan` AFTER INSERT ON `detail_transaksi` FOR EACH ROW BEGIN
+	UPDATE barang SET stok = stok-NEW.jumlah
+    WHERE id_barang = NEW.id_barang;
+   END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -376,7 +392,10 @@ INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`,
 ('PY-22010501012', 5, 1, 130500, 140000, 9500, '2022-01-05', '18:21:47'),
 ('PY-22011101011', 2, 1, 195500, 200000, 4500, '2022-01-11', '03:38:54'),
 ('PY-22011401011', 5, 1, 55000, 60000, 5000, '2022-01-14', '11:36:31'),
-('PY-22011401012', 9, 1, 105000, 110000, 5000, '2022-01-14', '17:38:26');
+('PY-22011401012', 9, 1, 105000, 110000, 5000, '2022-01-14', '17:38:26'),
+('PY-22013001011', 6, 1, 80500, 90000, 9500, '2022-01-30', '00:12:35'),
+('PY-22020201011', 3, 1, 33500, 34000, 500, '2022-02-02', '16:08:21'),
+('PY-22020201012', 2, 1, 40000, 50000, 10000, '2022-02-02', '16:09:22');
 
 -- --------------------------------------------------------
 
@@ -488,7 +507,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
@@ -512,7 +531,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `satuan`

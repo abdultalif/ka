@@ -6,7 +6,7 @@ class ModelStok extends CI_Model
 
     public function getmasuk()
     {
-        $this->db->select('*');
+        $this->db->select('id_masuk, barang, nama, jumlah_masuk, user, harga_beli, total_harga, date_format(tanggal_masuk,"%d %M %Y") as tanggal_masuk, barang.id_barang, barang_masuk.id_barang, supplier.id_supplier, barang_masuk.id_supplier, user.id_user, barang_masuk.id_user');
         $this->db->join('supplier', 'supplier.id_supplier = barang_masuk.id_supplier');
         $this->db->join('user', 'user.id_user = barang_masuk.id_user');
         $this->db->join('barang', 'barang.id_barang = barang_masuk.id_barang');
@@ -51,10 +51,10 @@ class ModelStok extends CI_Model
 
     public function getkeluar()
     {
-        $this->db->select('*');
+        $this->db->select('user.id_user, barang_keluar.id_user, barang.id_barang, barang_keluar.id_barang, date_format(tanggal_keluar,"%d %M %Y") as tanggal_keluar, id_keluar, barang, jumlah_keluar, keterangan, user');
         $this->db->join('user', 'user.id_user = barang_keluar.id_user');
         $this->db->join('barang', 'barang.id_barang = barang_keluar.id_barang');
-        return $query = $this->db->get('barang_keluar');
+        return $this->db->get('barang_keluar');
     }
 
     public function delete_masuk($id)
