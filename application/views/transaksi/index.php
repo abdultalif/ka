@@ -58,7 +58,16 @@
                                         <td><?= $stok; ?></td>
                                         <td><?= $c['satuan']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('transaksi/add/') . $c['id_barang']; ?>" class="btn btn-success"><i class="fa fa-cart-plus"></i></a>
+                                            <?php
+                                                if ($c['stok'] == 0) {
+                                            ?>
+                                                    <a href="" class="btn btn-danger" disable><i class="fa fa-cart-plus"></i></a>
+                                            <?php
+                                                } else { ?>
+                                                    <a href="<?= base_url('transaksi/add/') . $c['id_barang']; ?>" class="btn btn-success"><i class="fa fa-cart-plus"></i></a>
+                                            <?php
+                                            }
+                                            ?>
                                         </td>
                                     </tr>
                             <?php
@@ -195,8 +204,6 @@
                             <th>Invoice</th>
                             <th>Tanggal</th>
                             <th>Pelanggan</th>
-                            <th>Total Harga</th>
-                            <th>Total Bayar</th>
                             <th>Kasir</th>
                             <th>Aksi</th>
                         </tr>
@@ -206,9 +213,6 @@
                             <th>#</th>
                             <th>Invoice</th>
                             <th>Tanggal</th>
-                            <th>Pelanggan</th>
-                            <th>Total Harga</th>
-                            <th>Total Bayar</th>
                             <th>Kasir</th>
                             <th>Aksi</th>
                         </tr>
@@ -224,8 +228,6 @@
                                     <td><?= $f['invoice']; ?></td>
                                     <td><i class="fa fa-calendar-alt"></i> <?= $f['tanggal']; ?> <?= $f['waktu'] ?></td>
                                     <td><?= $f['nama']; ?></td>
-                                    <td>Rp. <?= number_format($f['total']); ?></td>
-                                    <td>Rp. <?= number_format($f['bayar']); ?></td>
                                     <td><?= $f['user']; ?></td>
                                     <td>
                                         <a href="<?= base_url('transaksi/detail/') . $f['invoice']; ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>

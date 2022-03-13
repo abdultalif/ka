@@ -8,8 +8,13 @@ class Auth extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('admin');
         }
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => '{field} belum di isi',
+            'valid_email' => '{field} tidak valid'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim', [
+            'required' => '{field} belum di isi'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Halaman Login';

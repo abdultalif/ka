@@ -35,8 +35,6 @@
                                 <td><i class="fa fa-calendar-alt"></i> <?= $b['tanggal_masuk']; ?></td>
                                 <td>
                                     <button id="detail" class="badge badge-dark" data-toggle="modal" data-target=".detail-barang" data-id_masuk="<?= $b['id_masuk']; ?>" data-nama="<?= $b['nama']; ?>" data-user="<?= $b['user']; ?>" data-barang="<?= $b['barang']; ?>" data-jumlah_masuk="<?= $b['jumlah_masuk']; ?>" data-harga="<?= $b['harga_beli']; ?>" data-total_harga="<?= $b['total_harga']; ?>" data-tanggal_masuk="<?= $b['tanggal_masuk']; ?>"><i class="fa fa-eye"></i> Detail</button>
-
-
                                     <a href="<?= base_url('stok/hapus_masuk/') . $b['id_masuk'] . '/' . $b['id_barang']  ?>" class="badge badge-danger" onclick="return confirm('Hapus <?= $b['barang']; ?> ??')"><i class="fa fa-trash-alt"></i> Hapus</a>
                                 </td>
                             </tr>

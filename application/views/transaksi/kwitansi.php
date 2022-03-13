@@ -58,7 +58,7 @@
         <div class="title">
             <b>Warung Ali</b>
             <br>
-            <small>Jl. Bojong Mentang, Ciomas. Bogor</small><br>
+            <small>Jl. Bojong Menteng, Ciomas. Bogor</small><br>
             <small>Telp. 08954567765434</small>
         </div>
 

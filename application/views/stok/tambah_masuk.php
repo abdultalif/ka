@@ -13,8 +13,7 @@
                             </h4>
                         </div>
                         <div class="col-auto">
-
-                            <a href="<?= base_url('stok') ?>" class="btn btn-sm btn-secondary btn-icon-split">
+                            <a href="<?= base_url('stok') ?>" class="btn btn-sm btn-dark btn-icon-split">
                                 <span class="icon">
                                     <i class="fa fa-arrow-left"></i>
                                 </span>
@@ -120,8 +119,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- modal Barang -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

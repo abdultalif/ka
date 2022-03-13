@@ -128,6 +128,8 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
+<script src="<?= base_url('assets/vendor/sweet-alert/sweetalert2.all.min.js'); ?>"></script>
+
 <script>
     var ctx = document.getElementById("myPieChart");
     var myPieChart = new Chart(ctx, {
@@ -313,6 +315,11 @@
             document.getElementById('kembali').value = kurang;
         }
     }
+</script>
+
+<script>
+    const flashData = $('.flash-data').data('flashdata');
+    console.log(flashData);
 </script>
 
 </body>
