@@ -169,4 +169,16 @@ class Transaksi extends CI_Controller
         // nama file pdf yang di hasilkan
         $this->pdf->load_view('transaksi/kwitansi', $data);
     }
+
+    public function riwayat()
+    {
+        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['riwayat'] = $this->modelaporan->transaksi()->result_array();
+        $data['judul'] = 'Riwayat Transaksi';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('transaksi/riwayat', $data);
+        $this->load->view('templates/footer');
+    }
 }

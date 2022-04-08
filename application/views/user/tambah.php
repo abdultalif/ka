@@ -63,7 +63,6 @@
                                         <option value="">Pilih Role</option>
                                         <option value="Admin">Admin</option>
                                         <option value="Kasir">Kasir</option>
-                                        <option value="Owner">Owner</option>
                                     </select>
                                 </div>
                                 <?= form_error('role', '<small class="text-danger">', '</small>'); ?>

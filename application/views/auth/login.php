@@ -30,9 +30,6 @@
                                     </button>
                                 </form>
                                 <hr>
-                                <div class="text-center">
-                                    <a class="small text-secondary" href="<?= base_url('auth/registrasi'); ?>">Daftar Member!</a>
-                                </div>
                             </div>
                         </div>
                     </div>

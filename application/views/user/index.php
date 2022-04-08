@@ -32,28 +32,30 @@
                         <?php
                         $no = 1;
                         foreach ($users as $u) {
+                            if ($u['role_id']  != 'Owner') {
                         ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><img width="50" src="<?= base_url('assets/img/') . $u['image'];  ?>"></td>
-                                <td><?= $u['user']; ?></td>
-                                <td><?= $u['email']; ?></td>
-                                <td><?= $u['role_id']; ?></td>
-                                <td>
-                                    <?php
-                                    if ($u['is_active'] == 1) { ?>
-                                        <a href="<?= base_url('user/activeuser/') . $u['id_user']; ?>" class="badge badge-success" title="<?= $u['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
-                                    <?php
-                                    } else { ?>
-                                        <a href="<?= base_url('user/activeuser/') . $u['id_user']; ?>" class="badge badge-secondary" title="<?= $u['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
-                                    <?php
-                                    }
-                                    ?>
-                                    <a href="<?= base_url('user/ubahuser/') . $u['id_user']; ?>" class="badge badge-warning"><i class="fa fa-user-edit"></i></a>
-                                    <a href="<?= base_url('user/hapususer/') . $u['id_user']; ?>" class="badge badge-dark" onclick="return confirm('Hapus User <?= $u['user']; ?> ??')"><i class="fa fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><img width="50" src="<?= base_url('assets/img/') . $u['image'];  ?>"></td>
+                                    <td><?= $u['user']; ?></td>
+                                    <td><?= $u['email']; ?></td>
+                                    <td><?= $u['role_id']; ?></td>
+                                    <td>
+                                        <?php
+                                        if ($u['is_active'] == 1) { ?>
+                                            <a href="<?= base_url('user/activeuser/') . $u['id_user']; ?>" class="badge badge-success" title="<?= $u['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
+                                        <?php
+                                        } else { ?>
+                                            <a href="<?= base_url('user/activeuser/') . $u['id_user']; ?>" class="badge badge-secondary" title="<?= $u['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
+                                        <?php
+                                        }
+                                        ?>
+                                        <a href="<?= base_url('user/ubahuser/') . $u['id_user']; ?>" class="badge badge-warning"><i class="fa fa-user-edit"></i></a>
+                                        <a href="<?= base_url('user/hapususer/') . $u['id_user']; ?>" class="badge badge-dark" onclick="return confirm('Hapus User <?= $u['user']; ?> ??')"><i class="fa fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
                         <?php
+                            }
                         }
                         ?>
                     </tbody>

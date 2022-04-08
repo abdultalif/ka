@@ -25,6 +25,15 @@
         </li>
     <?php } ?>
 
+    <?php if ($this->session->userdata('role_id') == 'Owner') { ?>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item <?= $this->uri->segment(1) == 'owner' ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('owner') ?>">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    <?php } ?>
+
     <?php if ($this->session->userdata('role_id') == 'Kasir') { ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item <?= $this->uri->segment(1) == 'kasir' ? 'active' : '' ?>">
@@ -77,10 +86,12 @@
         <hr class="sidebar-divider">
     <?php } ?>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Transaksi
-    </div>
+    <?php if ($this->session->userdata('role_id') == 'Kasir' || $this->session->userdata('role_id') == 'Admin') { ?>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Transaksi
+        </div>
+    <?php } ?>
 
     <?php if ($this->session->userdata('role_id') == 'Admin') { ?>
         <!-- Nav Item - Stok -->
@@ -97,21 +108,33 @@
                 </div>
             </div>
         </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
     <?php } ?>
 
-    <?php if ($this->session->userdata('role_id')  == 'Kasir' || $this->session->userdata('role_id')  == 'Admin') { ?>
-        <!-- Nav Item - Transaksi -->
-        <li class="nav-item <?= $this->uri->segment(1) == 'transaksi' ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('transaksi'); ?>">
+    <?php if ($this->session->userdata('role_id')  == 'Kasir') { ?>
+
+        <!-- Nav Item - Stok -->
+        <li class="nav-item ">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-coins"></i>
-                <span>Transaksi</span></a>
+                <span>Transaksi</span>
+            </a>
+            <div id="collapseTwo" class="collapse <?= $this->uri->segment(1) == 'transaksi' && $this->uri->segment(2) == '' ? 'show' : '' ?> <?= $this->uri->segment(1) == 'stok' && $this->uri->segment(2) == '' ? 'show' : 'keluar' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Menu Transaksi</h6>
+                    <a class="collapse-item <?= $this->uri->segment(1) == 'transaksi' && $this->uri->segment(2) == '' ? 'active' : '' ?>" href="<?= base_url('transaksi'); ?>">Transaksi Penjualan</a>
+                    <a class="collapse-item <?= $this->uri->segment(1) == 'transaksi' && $this->uri->segment(2) == 'riwayat' ? 'active' : '' ?>" href="<?= base_url('transaksi/riwayat'); ?>">Riwayat Transaksi</a>
+                </div>
+            </div>
         </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
     <?php } ?>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 
-    <?php if ($this->session->userdata('role_id')  == 'Admin') { ?>
+    <?php if ($this->session->userdata('role_id')  == 'Owner') { ?>
         <!-- Heading -->
         <div class="sidebar-heading">
             Laporan

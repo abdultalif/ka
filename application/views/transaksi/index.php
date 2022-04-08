@@ -59,12 +59,12 @@
                                         <td><?= $c['satuan']; ?></td>
                                         <td>
                                             <?php
-                                                if ($c['stok'] == 0) {
+                                            if ($c['stok'] == 0) {
                                             ?>
-                                                    <a href="" class="btn btn-danger" disable><i class="fa fa-cart-plus"></i></a>
+                                                <a href="" class="btn btn-danger" disable><i class="fa fa-cart-plus"></i></a>
                                             <?php
-                                                } else { ?>
-                                                    <a href="<?= base_url('transaksi/add/') . $c['id_barang']; ?>" class="btn btn-success"><i class="fa fa-cart-plus"></i></a>
+                                            } else { ?>
+                                                <a href="<?= base_url('transaksi/add/') . $c['id_barang']; ?>" class="btn btn-success"><i class="fa fa-cart-plus"></i></a>
                                             <?php
                                             }
                                             ?>
@@ -190,110 +190,56 @@
             </div>
         </div>
     </div>
-    <!-- DataTales Example -->
-    <div class="card shadow mt-4">
-        <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-dark text-center">Riwayat Transaksi</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered text-center" id="tabeltransaksi" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Invoice</th>
-                            <th>Tanggal</th>
-                            <th>Pelanggan</th>
-                            <th>Kasir</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Invoice</th>
-                            <th>Tanggal</th>
-                            <th>Kasir</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        if ($user['user']) {
-                            foreach ($transaksi as $f) {
-                        ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $f['invoice']; ?></td>
-                                    <td><i class="fa fa-calendar-alt"></i> <?= $f['tanggal']; ?> <?= $f['waktu'] ?></td>
-                                    <td><?= $f['nama']; ?></td>
-                                    <td><?= $f['user']; ?></td>
-                                    <td>
-                                        <a href="<?= base_url('transaksi/detail/') . $f['invoice']; ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                        <a href="<?= base_url('transaksi/printbyid/') . $f['invoice']; ?>" class="btn btn-warning" target="blank"><i class="fa fa-print"></i></a>
-                                    </td>
-                                </tr>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- modal Barang -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newStudentModalLabel">Pilih Barang Yang Ingin Di Beli</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped text-center" id="databarang" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Kode Barang</th>
-                                <th>Nama Barang</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
-                                <th>Satuan</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            foreach ($barang as $b) {
-                            ?>
+    <!-- modal Barang -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newStudentModalLabel">Pilih Barang Yang Ingin Di Beli</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped text-center" id="databarang" cellspacing="0">
+                            <thead>
                                 <tr>
-                                    <td><?= $no++ ?></td>
-                                    <td><?= $b['id_barang']; ?></td>
-                                    <td><?= $b['barang']; ?></td>
-                                    <td><?= $b['nama_kategori']; ?></td>
-                                    <td>Rp. <?= number_format($b['harga']); ?></td>
-                                    <td><?= $b['stok']; ?></td>
-                                    <td><?= $b['satuan']; ?></td>
-                                    <td>
-                                        <a href="<?= base_url('transaksi/add/') . $b['id_barang']; ?>" id="select" class="btn btn-success btn-sm"><i class="fa fa-cart-plus"></i> Beli</a>
-                                    </td>
+                                    <th>#</th>
+                                    <th>Kode Barang</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Satuan</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                foreach ($barang as $b) {
+                                ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $b['id_barang']; ?></td>
+                                        <td><?= $b['barang']; ?></td>
+                                        <td><?= $b['nama_kategori']; ?></td>
+                                        <td>Rp. <?= number_format($b['harga']); ?></td>
+                                        <td><?= $b['stok']; ?></td>
+                                        <td><?= $b['satuan']; ?></td>
+                                        <td>
+                                            <a href="<?= base_url('transaksi/add/') . $b['id_barang']; ?>" id="select" class="btn btn-success btn-sm"><i class="fa fa-cart-plus"></i> Beli</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
