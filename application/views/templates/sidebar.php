@@ -16,7 +16,7 @@
         Dashboard
     </div>
 
-    <?php if ($this->session->userdata('role_id') == 'Admin') { ?>
+    <?php if ($this->session->userdata('role_id')  == 'Admin' && $this->session->userdata('id_user')) { ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item <?= $this->uri->segment(1) == 'admin' ? 'active' : '' ?>">
             <a class="nav-link" href="<?= base_url('admin') ?>">

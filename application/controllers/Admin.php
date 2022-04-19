@@ -10,14 +10,16 @@ class Admin extends CI_Controller
     }
     public function index()
     {
-        $data['judul'] = 'Halaman Dashboard';
-        $data['user'] = $this->ModelUser->cekData(['role_id' => $this->session->userdata('role_id')])->row_array();
-        $data['stok'] = $this->ModelCrud->sum('barang', 'stok');
-        $data['laku'] = $this->ModelCrud->laku('detail_transaksi', 'jumlah');
-        $data['b_masuk'] = $this->ModelStok->bmasuk()->result_array();
-        $data['b_keluar'] = $this->ModelStok->bkeluar()->result_array();
-        $data['barang_masuk'] = $this->ModelStok->count('barang_masuk');
-        $data['barang_keluar'] = $this->ModelStok->count('barang_keluar');
+        $data = [
+            'judul' => 'Halaman Dashboard',
+            'user' => $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array(),
+            'stok' => $this->ModelCrud->sum('barang', 'stok'),
+            'laku' => $this->ModelCrud->laku('detail_transaksi', 'jumlah'),
+            'b_masuk' => $this->ModelStok->bmasuk()->result_array(),
+            'b_keluar' => $this->ModelStok->bkeluar()->result_array(),
+            'barang_masuk' => $this->ModelStok->count('barang_masuk'),
+            'barang_keluar' => $this->ModelStok->count('barang_keluar')
+        ];
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

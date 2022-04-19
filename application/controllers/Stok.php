@@ -12,7 +12,7 @@ class Stok extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Data Barang Masuk';
-        $data['user'] = $this->ModelUser->cekData(['role_id' => $this->session->userdata('role_id')])->row_array();
+        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['barang_m'] = $this->ModelStok->getmasuk()->result_array();
 
         $this->load->view('templates/header', $data);
@@ -87,7 +87,7 @@ class Stok extends CI_Controller
     public function keluar()
     {
         $data['judul'] = 'Data Barang Keluar';
-        $data['user'] = $this->ModelUser->cekData(['role_id' => $this->session->userdata('role_id')])->row_array();
+        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['barang_k'] = $this->ModelStok->getkeluar()->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

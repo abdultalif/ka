@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2022 at 10:10 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Apr 08, 2022 at 09:14 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21102902', 'Lifeboy', 11, 1, '3000', 20),
 ('DB-21102903', 'Teh Gelas', 10, 10, '18000', 9),
 ('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 1),
-('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 29),
+('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 20),
 ('DB-21103103', 'Teh Sari Wangi', 10, 7, '10000', 6),
 ('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 5),
 ('DB-21103105', 'Evo Diplomat Biru 16btng - 10bks', 12, 9, '80500', 2),
@@ -56,7 +56,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21110802', 'Indomie Soto 40 bks', 9, 10, '97000', 6),
 ('DB-21111201', 'Kopi Kapal Api', 10, 1, '1500', 40),
 ('DB-21111202', 'Kopi Kapal Api', 10, 10, '98000', 4),
-('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 22),
+('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 20),
 ('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 9),
 ('DB-21111503', 'Magnum Filter 12btng - 10bks', 12, 13, '167000', 4),
 ('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 7),
@@ -202,7 +202,9 @@ INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, 
 (41, 'PY-22013001011', 'DB-21103105', 1, 1, 80500),
 (42, 'PY-22020201011', 'DB-21103104', 1, 2, 32000),
 (43, 'PY-22020201011', 'DB-21103101', 1, 1, 1500),
-(45, 'PY-22020201012', 'DB-21102901', 1, 2, 40000);
+(45, 'PY-22020201012', 'DB-21102901', 1, 2, 40000),
+(46, 'PY-22040801011', 'DB-21111501', 22, 2, 40000),
+(47, 'PY-22040801011', 'DB-21103102', 22, 9, 207000);
 
 --
 -- Triggers `detail_transaksi`
@@ -395,7 +397,8 @@ INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`,
 ('PY-22011401012', 9, 1, 105000, 110000, 5000, '2022-01-14', '17:38:26'),
 ('PY-22013001011', 6, 1, 80500, 90000, 9500, '2022-01-30', '00:12:35'),
 ('PY-22020201011', 3, 1, 33500, 34000, 500, '2022-02-02', '16:08:21'),
-('PY-22020201012', 2, 1, 40000, 50000, 10000, '2022-02-02', '16:09:22');
+('PY-22020201012', 2, 1, 40000, 50000, 10000, '2022-02-02', '16:09:22'),
+('PY-22040801011', 2, 22, 247000, 250000, 3000, '2022-04-08', '13:43:46');
 
 -- --------------------------------------------------------
 
@@ -419,9 +422,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user`, `email`, `image`, `password`, `role_id`, `is_active`, `tanggal_input`) VALUES
-(1, 'Abdul Talif', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Admin', 1, 1633425423),
+(1, 'Abdul Talif', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Kasir', 1, 1633425423),
 (22, 'Arif Rahman', 'abdultalif14@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 1, 1638662263),
-(23, 'Solah', 'solah@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 0, 1640242780);
+(23, 'Solah', 'solah@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 0, 1640242780),
+(24, 'Abdul Talif Parinduri', 'abdultalif75@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551);
 
 --
 -- Indexes for dumped tables
@@ -507,7 +511,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
@@ -531,7 +535,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `satuan`
@@ -549,7 +553,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
