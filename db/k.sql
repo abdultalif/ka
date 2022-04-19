@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2022 at 09:14 AM
+-- Generation Time: Apr 19, 2022 at 06:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -45,7 +45,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21102902', 'Lifeboy', 11, 1, '3000', 20),
 ('DB-21102903', 'Teh Gelas', 10, 10, '18000', 9),
 ('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 1),
-('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 20),
+('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 17),
 ('DB-21103103', 'Teh Sari Wangi', 10, 7, '10000', 6),
 ('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 5),
 ('DB-21103105', 'Evo Diplomat Biru 16btng - 10bks', 12, 9, '80500', 2),
@@ -57,7 +57,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21111201', 'Kopi Kapal Api', 10, 1, '1500', 40),
 ('DB-21111202', 'Kopi Kapal Api', 10, 10, '98000', 4),
 ('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 20),
-('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 9),
+('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 7),
 ('DB-21111503', 'Magnum Filter 12btng - 10bks', 12, 13, '167000', 4),
 ('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 7),
 ('DB-21111505', 'GGF Filter 12btng 20bks', 12, 13, '374000', 15),
@@ -204,7 +204,9 @@ INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, 
 (43, 'PY-22020201011', 'DB-21103101', 1, 1, 1500),
 (45, 'PY-22020201012', 'DB-21102901', 1, 2, 40000),
 (46, 'PY-22040801011', 'DB-21111501', 22, 2, 40000),
-(47, 'PY-22040801011', 'DB-21103102', 22, 9, 207000);
+(47, 'PY-22040801011', 'DB-21103102', 22, 9, 207000),
+(48, 'PY-22041701011', 'DB-21111502', 22, 2, 90000),
+(49, 'PY-22041701011', 'DB-21103102', 22, 3, 69000);
 
 --
 -- Triggers `detail_transaksi`
@@ -216,30 +218,6 @@ CREATE TRIGGER `transaksi_penjualan` AFTER INSERT ON `detail_transaksi` FOR EACH
    END
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `karyawan`
---
-
-CREATE TABLE `karyawan` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `alamat` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `karyawan`
---
-
-INSERT INTO `karyawan` (`id`, `nama`, `alamat`) VALUES
-(1, 'talif', 'bogor'),
-(2, 'naufal', 'ciomas'),
-(3, 'kriti', 'cibinog'),
-(4, 'rama', 'cangkrang'),
-(5, 'savin', 'pop'),
-(6, '', '');
 
 -- --------------------------------------------------------
 
@@ -306,6 +284,13 @@ CREATE TABLE `penjualan` (
   `jumlah` int(50) NOT NULL,
   `total` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penjualan`
+--
+
+INSERT INTO `penjualan` (`id_penjualan`, `id_barang`, `id_user`, `jumlah`, `total`) VALUES
+(92, 'DB-21103104', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -398,7 +383,8 @@ INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`,
 ('PY-22013001011', 6, 1, 80500, 90000, 9500, '2022-01-30', '00:12:35'),
 ('PY-22020201011', 3, 1, 33500, 34000, 500, '2022-02-02', '16:08:21'),
 ('PY-22020201012', 2, 1, 40000, 50000, 10000, '2022-02-02', '16:09:22'),
-('PY-22040801011', 2, 22, 247000, 250000, 3000, '2022-04-08', '13:43:46');
+('PY-22040801011', 2, 22, 247000, 250000, 3000, '2022-04-08', '13:43:46'),
+('PY-22041701011', 8, 22, 159000, 160000, 1000, '2022-04-17', '23:56:47');
 
 -- --------------------------------------------------------
 
@@ -422,10 +408,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user`, `email`, `image`, `password`, `role_id`, `is_active`, `tanggal_input`) VALUES
-(1, 'Abdul Talif', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Kasir', 1, 1633425423),
-(22, 'Arif Rahman', 'abdultalif14@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 1, 1638662263),
-(23, 'Solah', 'solah@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 0, 1640242780),
-(24, 'Abdul Talif Parinduri', 'abdultalif75@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551);
+(1, 'Abdul Talif Parinduri', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Kasir', 1, 1633425423),
+(22, 'Dwi Ayu Lestari', 'dwiayu@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 0, 1638662263),
+(23, 'Inez zakiyatunnisa', 'inez@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 1, 1640242780),
+(24, 'Jeremy Thimothy', 'abdultalif75@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551),
+(25, 'Ryan Faturrahman', 'ryan@gmail.com', 'default.jpg', '$2y$10$FtAvfIpOhqNk9tkm2ijEOuaPB8cwra8Tc2LObrwvBUGGIq/zua4EK', 'Admin', 1, 1649665264);
 
 --
 -- Indexes for dumped tables
@@ -454,12 +441,6 @@ ALTER TABLE `barang_masuk`
 --
 ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`id_detail`);
-
---
--- Indexes for table `karyawan`
---
-ALTER TABLE `karyawan`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kategori`
@@ -511,13 +492,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
---
--- AUTO_INCREMENT for table `karyawan`
---
-ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -535,7 +510,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `satuan`
@@ -553,7 +528,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
