@@ -25,6 +25,12 @@
                                             <?= form_error('password', '<div class="pl-3">', '</div>'); ?>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="show-pass">
+                                            <label class="custom-control-label" for="show-pass">Show Password</label>
+                                        </div>
+                                    </div>
                                     <button type="submit" class="btn btn-secondary btn-user btn-block">
                                         Masuk
                                     </button>

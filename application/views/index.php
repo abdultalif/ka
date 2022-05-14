@@ -88,16 +88,17 @@
 
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
+      <!-- Area Chart -->
       <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Barang Paling Laku</h6>
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-dark">Data Transaksi Penjualan Warung Ali <?= date('Y'); ?></h6>
         </div>
-        <!-- Card Body -->
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="myBarChart"></canvas>
+            <canvas id="myAreaChart"></canvas>
           </div>
+          <hr>
+          Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
         </div>
       </div>
     </div>

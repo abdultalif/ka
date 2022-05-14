@@ -12,7 +12,7 @@ class Laporan extends CI_Controller
 
     public function index()
     {
-        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['judul'] = 'Laporan Penjualan';
         $data['transaksi'] = $this->modelaporan->transaksi()->result_array();
 
@@ -54,7 +54,7 @@ class Laporan extends CI_Controller
 
     public function stok()
     {
-        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['judul'] = 'Laporan Stok Barang';
 
         $this->form_validation->set_rules('dari', 'Dari', 'required', [

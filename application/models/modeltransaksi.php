@@ -68,4 +68,11 @@ class modeltransaksi extends CI_Model
 		$sql = "INSERT INTO detail_transaksi (invoice, id_barang, id_user, jumlah, total_harga) SELECT transaksi.invoice, penjualan.id_barang, penjualan.id_user, penjualan.jumlah, penjualan.total FROM transaksi, penjualan WHERE transaksi.invoice = '$where'";
 		$this->db->query($sql);
 	}
+
+	public function charttransaksi($bulan)
+	{
+		$like = 'PY-' . date('y') . $bulan;
+		$this->db->like('invoice', $like, 'after');
+		return count($this->db->get('transaksi')->result_array());
+	}
 }

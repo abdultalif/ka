@@ -7,6 +7,7 @@ class Kasir extends CI_Controller
     {
         parent::__construct();
         cek_login();
+        $this->load->model('modeltransaksi');
     }
     public function index()
     {
@@ -18,8 +19,15 @@ class Kasir extends CI_Controller
             'b_masuk' => $this->ModelStok->bmasuk()->result_array(),
             'b_keluar' => $this->ModelStok->bkeluar()->result_array(),
             'barang_masuk' => $this->ModelStok->count('barang_masuk'),
-            'barang_keluar' => $this->ModelStok->count('barang_keluar')
+            'barang_keluar' => $this->ModelStok->count('barang_keluar'),
+            'transaksi' => []
         ];
+
+        $bln = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+        foreach ($bln as $b) {
+            $data['transaksi'][] = $this->modeltransaksi->charttransaksi($b);
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

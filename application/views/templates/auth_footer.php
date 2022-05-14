@@ -11,6 +11,18 @@
   $('.alert-message').alert().delay(3000).slideUp('slow');
 </script>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#show-pass').click(function() {
+      if ($(this).is(':checked')) {
+        $('#password').attr('type', 'text');
+      } else {
+        $('#password').attr('type', 'password');
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>

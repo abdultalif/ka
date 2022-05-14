@@ -89,7 +89,6 @@
                                     <th>Jumlah Beli</th>
                                     <th>Satuan</th>
                                     <th>Total</th>
-                                    <th>Kasir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,7 +104,6 @@
                                         <td><?= $d['jumlah']; ?></td>
                                         <td><?= $d['satuan']; ?></td>
                                         <td>Rp. <?= number_format($d['total_harga']); ?></td>
-                                        <td><?= $d['user']; ?></td>
                                     </tr>
                                 <?php
                                 }
@@ -115,7 +113,6 @@
                                 <tr>
                                     <td colspan="6" style="text-align: right;"><b>Total Bayar</b></td>
                                     <td><b>Rp. <?= number_format($d['total']); ?></b></td>
-                                    <td style="background:#ddd"></td>
                                 </tr>
                             </tfoot>
                         </table>
