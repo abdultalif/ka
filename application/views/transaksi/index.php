@@ -10,7 +10,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <form action="<?= base_url('transaksi'); ?>" method="get">
-                        <input type="text" name="keyword" class="form-control" Placeholder="Input Barang / Kategori [ENTER]">
+                        <input type="text" name="keyword" class="form-control" Placeholder="Input Barang / Kategori [ENTER]" autofocus>
                     </form>
                 </div>
             </div>
@@ -230,7 +230,7 @@
                                         <td><?= $b['stok']; ?></td>
                                         <td><?= $b['satuan']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('transaksi/add/') . $b['id_barang']; ?>" id="select" class="btn btn-success btn-sm"><i class="fa fa-cart-plus"></i> Beli</a>
+                                            <a href="<?= base_url('transaksi/add/') . $b['id_barang']; ?>" class="btn btn-success btn-sm"><i class="fa fa-cart-plus"></i> Beli</a>
                                         </td>
                                     </tr>
                                 <?php

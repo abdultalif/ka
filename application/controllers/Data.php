@@ -1,13 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data extends CI_Controller {
-    public function __construct() {
+class Data extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         cek_login();
     }
 
-    public function index() {
+    public function index()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->ModelCrud->getkategori()->result_array();
         $data['judul'] = 'Halaman Kategori';
@@ -30,7 +33,8 @@ class Data extends CI_Controller {
         }
     }
 
-    public function ubahkategori() {
+    public function ubahkategori()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->ModelCrud->getkategori()->result_array();
         $data['judul'] = 'Ubah Kategori';
@@ -54,13 +58,15 @@ class Data extends CI_Controller {
         }
     }
 
-    public function hapuskat($id) {
+    public function hapuskat($id)
+    {
         $this->ModelCrud->hapuskat(['id_kategori' => $id]);
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Success!</strong> Data Berhasil DiHapus<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('data');
     }
 
-    public function satuan() {
+    public function satuan()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['satuan'] = $this->ModelCrud->getsatuan()->result_array();
         $data['judul'] = 'Halaman Satuan';
@@ -83,7 +89,8 @@ class Data extends CI_Controller {
         }
     }
 
-    public function ubahsatuan() {
+    public function ubahsatuan()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['satuan'] = $this->ModelCrud->getsatuan()->result_array();
         $data['judul'] = 'Ubah Satuan';
@@ -107,13 +114,15 @@ class Data extends CI_Controller {
         }
     }
 
-    public function hapussat($id) {
+    public function hapussat($id)
+    {
         $this->ModelCrud->hapussat(['id_satuan' => $id]);
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Success!</strong> Data Berhasil DiHapus<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('data/satuan');
     }
 
-    public function barang() {
+    public function barang()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->ModelCrud->getbarang()->result_array();
         $data['kategori'] = $this->ModelCrud->getkategori()->result_array();
@@ -138,10 +147,10 @@ class Data extends CI_Controller {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
             $this->load->view('templates/topbar', $data);
-            $this->load->view('data/barang');
+            $this->load->view('data/barang', $data);
             $this->load->view('templates/footer');
         } else {
-            
+
             $data = [
                 'id_barang' => $this->input->post('id'),
                 'barang' => $this->input->post('nama'),
@@ -155,13 +164,15 @@ class Data extends CI_Controller {
         }
     }
 
-    public function hapusbarang($id) {
+    public function hapusbarang($id)
+    {
         $this->ModelCrud->hapusbarang(['id_barang' => $id]);
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Success!</strong> Data Berhasil Dihapus<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('data/barang');
     }
-    
-    public function ubahbarang() {
+
+    public function ubahbarang()
+    {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->ModelCrud->getbarangbyid(['id_barang' => $this->uri->segment('3')])->row_array();
         $data['kategori'] = $this->ModelCrud->getkategori()->result_array();

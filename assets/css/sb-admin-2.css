@@ -524,6 +524,10 @@ mark,
 	height: auto;
 }
 
+.img-circle{
+	border-radius:50%
+}
+
 .img-thumbnail {
 	padding: 0.25rem;
 	background-color: #fff;

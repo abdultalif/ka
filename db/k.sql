@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2022 at 06:05 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.28
+-- Waktu pembuatan: 17 Bulan Mei 2022 pada 17.41
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang`
+-- Struktur dari tabel `barang`
 --
 
 CREATE TABLE `barang` (
@@ -37,34 +37,34 @@ CREATE TABLE `barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `barang`
+-- Dumping data untuk tabel `barang`
 --
 
 INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`, `stok`) VALUES
-('DB-21102901', 'Komik One Piece Volume 96', 7, 1, '20000', 60),
-('DB-21102902', 'Lifeboy', 11, 1, '3000', 20),
+('DB-21102901', 'Komik One Piece Volume 96', 7, 1, '20000', 55),
+('DB-21102902', 'Lifeboy', 11, 1, '3000', 6),
 ('DB-21102903', 'Teh Gelas', 10, 10, '18000', 9),
 ('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 1),
 ('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 17),
 ('DB-21103103', 'Teh Sari Wangi', 10, 7, '10000', 6),
-('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 5),
+('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 2),
 ('DB-21103105', 'Evo Diplomat Biru 16btng - 10bks', 12, 9, '80500', 2),
 ('DB-21103106', 'Redmi 10 6/128', 5, 2, '2500000', 20),
 ('DB-21103107', 'Lenovo Ideapad S145', 1, 2, '5700000', 3),
 ('DB-21110401', 'Terigu', 14, 6, '8000', 25),
 ('DB-21110801', 'Indomie Soto', 9, 1, '3000', 0),
-('DB-21110802', 'Indomie Soto 40 bks', 9, 10, '97000', 6),
+('DB-21110802', 'Indomie Soto 40 bks', 9, 10, '97000', 5),
 ('DB-21111201', 'Kopi Kapal Api', 10, 1, '1500', 40),
-('DB-21111202', 'Kopi Kapal Api', 10, 10, '98000', 4),
-('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 20),
-('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 7),
-('DB-21111503', 'Magnum Filter 12btng - 10bks', 12, 13, '167000', 4),
-('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 7),
-('DB-21111505', 'GGF Filter 12btng 20bks', 12, 13, '374000', 15),
+('DB-21111202', 'Kopi Kapal Api', 10, 10, '98000', 3),
+('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 12),
+('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 2),
+('DB-21111503', 'Magnum Filter 12btng - 10bks', 12, 13, '167000', 2),
+('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 3),
+('DB-21111505', 'GGF Filter 12btng 20bks', 12, 13, '374000', 14),
 ('DB-21111506', 'Indomie Goreng Rendang 40 bks', 9, 10, '110000', 4),
-('DB-21111507', 'Ultra Milk 24x200ml Coklat', 10, 10, '120000', 12),
+('DB-21111507', 'Ultra Milk 24x200ml Coklat', 10, 10, '120000', 11),
 ('DB-21111508', 'Envio Kretek 12btng -10bks', 12, 13, '91000', 0),
-('DB-21111801', 'pop mie', 9, 10, '300000', 6),
+('DB-21111801', 'pop mie', 9, 10, '300000', 4),
 ('DB-21111802', 'Envio Kretek 12btng', 12, 8, '16000', 16),
 ('DB-21111803', 'Teh Pucuk', 10, 10, '140000', 20),
 ('DB-21120501', 'Sampurna Mild 16btng-10bks', 12, 13, '250000', 5),
@@ -73,7 +73,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang_keluar`
+-- Struktur dari tabel `barang_keluar`
 --
 
 CREATE TABLE `barang_keluar` (
@@ -86,7 +86,7 @@ CREATE TABLE `barang_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `barang_keluar`
+-- Dumping data untuk tabel `barang_keluar`
 --
 
 INSERT INTO `barang_keluar` (`id_keluar`, `id_user`, `id_barang`, `jumlah_keluar`, `tanggal_keluar`, `keterangan`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `barang_keluar` (`id_keluar`, `id_user`, `id_barang`, `jumlah_keluar
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang_masuk`
+-- Struktur dari tabel `barang_masuk`
 --
 
 CREATE TABLE `barang_masuk` (
@@ -114,7 +114,7 @@ CREATE TABLE `barang_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `barang_masuk`
+-- Dumping data untuk tabel `barang_masuk`
 --
 
 INSERT INTO `barang_masuk` (`id_masuk`, `id_supplier`, `id_user`, `id_barang`, `jumlah_masuk`, `harga_beli`, `total_harga`, `tanggal_masuk`) VALUES
@@ -150,7 +150,7 @@ INSERT INTO `barang_masuk` (`id_masuk`, `id_supplier`, `id_user`, `id_barang`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_transaksi`
+-- Struktur dari tabel `detail_transaksi`
 --
 
 CREATE TABLE `detail_transaksi` (
@@ -163,7 +163,7 @@ CREATE TABLE `detail_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `detail_transaksi`
+-- Dumping data untuk tabel `detail_transaksi`
 --
 
 INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, `jumlah`, `total_harga`) VALUES
@@ -206,10 +206,28 @@ INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, 
 (46, 'PY-22040801011', 'DB-21111501', 22, 2, 40000),
 (47, 'PY-22040801011', 'DB-21103102', 22, 9, 207000),
 (48, 'PY-22041701011', 'DB-21111502', 22, 2, 90000),
-(49, 'PY-22041701011', 'DB-21103102', 22, 3, 69000);
+(49, 'PY-22041701011', 'DB-21103102', 22, 3, 69000),
+(50, 'PY-22042601011', 'DB-21103104', 1, 2, 32000),
+(51, 'PY-22042601011', 'DB-21111501', 1, 5, 100000),
+(52, 'PY-22042601011', 'DB-21111503', 1, 2, 334000),
+(53, 'PY-22051401011', 'DB-21111504', 1, 4, 718000),
+(54, 'PY-22051401012', 'DB-21102902', 1, 2, 6000),
+(55, 'PY-22051401012', 'DB-21111502', 1, 1, 45000),
+(56, 'PY-22051401012', 'DB-21111501', 1, 3, 60000),
+(57, 'PY-22051401012', 'DB-21111507', 1, 1, 120000),
+(58, 'PY-22051601011', 'DB-21110802', 1, 1, 97000),
+(59, 'PY-22051601011', 'DB-21111202', 1, 1, 98000),
+(61, 'PY-22051601012', 'DB-21111502', 1, 2, 90000),
+(62, 'PY-22051601012', 'DB-21102901', 1, 5, 100000),
+(64, 'PY-22051601013', 'DB-21102902', 1, 12, 36000),
+(65, 'PY-22051601013', 'DB-21111801', 1, 1, 300000),
+(67, 'PY-22051601014', 'DB-21103104', 1, 1, 16000),
+(68, 'PY-22051601015', 'DB-21111801', 1, 1, 300000),
+(69, 'PY-22051701011', 'DB-21111502', 1, 2, 90000),
+(70, 'PY-22051701011', 'DB-21111505', 1, 1, 374000);
 
 --
--- Triggers `detail_transaksi`
+-- Trigger `detail_transaksi`
 --
 DELIMITER $$
 CREATE TRIGGER `transaksi_penjualan` AFTER INSERT ON `detail_transaksi` FOR EACH ROW BEGIN
@@ -222,7 +240,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -231,7 +249,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
@@ -248,7 +266,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -260,7 +278,7 @@ CREATE TABLE `pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pelanggan`
+-- Dumping data untuk tabel `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `jk`, `no_telp`, `alamat`) VALUES
@@ -274,7 +292,7 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `jk`, `no_telp`, `alamat`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjualan`
+-- Struktur dari tabel `penjualan`
 --
 
 CREATE TABLE `penjualan` (
@@ -285,17 +303,10 @@ CREATE TABLE `penjualan` (
   `total` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `penjualan`
---
-
-INSERT INTO `penjualan` (`id_penjualan`, `id_barang`, `id_user`, `jumlah`, `total`) VALUES
-(92, 'DB-21103104', 1, 0, 0);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `satuan`
+-- Struktur dari tabel `satuan`
 --
 
 CREATE TABLE `satuan` (
@@ -304,7 +315,7 @@ CREATE TABLE `satuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `satuan`
+-- Dumping data untuk tabel `satuan`
 --
 
 INSERT INTO `satuan` (`id_satuan`, `satuan`) VALUES
@@ -322,7 +333,7 @@ INSERT INTO `satuan` (`id_satuan`, `satuan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Struktur dari tabel `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -333,7 +344,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `supplier`
+-- Dumping data untuk tabel `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama`, `no_telp`, `alamat`) VALUES
@@ -347,7 +358,7 @@ INSERT INTO `supplier` (`id_supplier`, `nama`, `no_telp`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -362,19 +373,10 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data untuk tabel `transaksi`
 --
 
 INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`, `kembalian`, `tanggal`, `waktu`) VALUES
-('24122021001', 5, 1, 78000, 80000, 2000, '2021-12-24', '11:17:16'),
-('24122021002', 3, 1, 430000, 450000, 20000, '2021-12-24', '13:29:17'),
-('24122021003', 8, 23, 219500, 220000, 500, '2021-12-24', '10:24:01'),
-('25122021004', 2, 1, 378500, 400000, 21500, '2021-12-25', '19:06:12'),
-('25122021005', 2, 1, 183000, 200000, 17000, '2021-12-25', '20:07:11'),
-('25122021006', 2, 1, 183000, 200000, 17000, '2021-12-25', '14:03:07'),
-('29122021007', 8, 1, 920500, 950000, 29500, '2021-12-29', '07:04:06'),
-('30122021008', 8, 1, 16000, 20000, 4000, '2021-12-30', '23:05:08'),
-('31122021009', 3, 1, 164000, 170000, 6000, '2021-12-31', '14:44:29'),
 ('PY-22010501011', 2, 1, 6000, 7000, 1000, '2022-01-05', '20:45:30'),
 ('PY-22010501012', 5, 1, 130500, 140000, 9500, '2022-01-05', '18:21:47'),
 ('PY-22011101011', 2, 1, 195500, 200000, 4500, '2022-01-11', '03:38:54'),
@@ -384,12 +386,21 @@ INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`,
 ('PY-22020201011', 3, 1, 33500, 34000, 500, '2022-02-02', '16:08:21'),
 ('PY-22020201012', 2, 1, 40000, 50000, 10000, '2022-02-02', '16:09:22'),
 ('PY-22040801011', 2, 22, 247000, 250000, 3000, '2022-04-08', '13:43:46'),
-('PY-22041701011', 8, 22, 159000, 160000, 1000, '2022-04-17', '23:56:47');
+('PY-22041701011', 8, 22, 159000, 160000, 1000, '2022-04-17', '23:56:47'),
+('PY-22042601011', 5, 1, 466000, 500000, 34000, '2022-04-26', '14:32:26'),
+('PY-22051401011', 8, 1, 718000, 720000, 2000, '2022-05-14', '12:23:55'),
+('PY-22051401012', 3, 1, 231000, 235000, 4000, '2022-05-14', '12:47:15'),
+('PY-22051601011', 2, 1, 195000, 200000, 5000, '2022-05-16', '12:54:23'),
+('PY-22051601012', 8, 1, 190000, 200000, 10000, '2022-05-16', '13:53:47'),
+('PY-22051601013', 2, 1, 336000, 350000, 14000, '2022-05-16', '13:54:40'),
+('PY-22051601014', 2, 1, 16000, 17000, 1000, '2022-05-16', '13:59:10'),
+('PY-22051601015', 5, 1, 300000, 300000, 0, '2022-05-16', '14:01:57'),
+('PY-22051701011', 6, 1, 464000, 500000, 36000, '2022-05-17', '14:21:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -404,131 +415,132 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `user`, `email`, `image`, `password`, `role_id`, `is_active`, `tanggal_input`) VALUES
 (1, 'Abdul Talif Parinduri', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Kasir', 1, 1633425423),
 (22, 'Dwi Ayu Lestari', 'dwiayu@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 0, 1638662263),
-(23, 'Inez zakiyatunnisa', 'inez@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 1, 1640242780),
-(24, 'Jeremy Thimothy', 'abdultalif75@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551),
-(25, 'Ryan Faturrahman', 'ryan@gmail.com', 'default.jpg', '$2y$10$FtAvfIpOhqNk9tkm2ijEOuaPB8cwra8Tc2LObrwvBUGGIq/zua4EK', 'Admin', 1, 1649665264);
+(23, 'Inez zakiyatunnisa', 'inez@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 0, 1640242780),
+(24, 'Jeremy Thimothy', 'jeremy@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551),
+(25, 'Ryan Faturrahman', 'ryan@gmail.com', 'default.jpg', '$2y$10$FtAvfIpOhqNk9tkm2ijEOuaPB8cwra8Tc2LObrwvBUGGIq/zua4EK', 'Admin', 1, 1649665264),
+(26, 'Abdul Talif', 'abdultalif14@gmail.com', 'default.jpg', '$2y$10$qgx807h/sgpPo8Bd/oEE/O/kPJw0/GRSF34iDNG/1ktJ7IeBOpWdm', 'Admin', 1, 1652752828);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `barang`
+-- Indeks untuk tabel `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`) USING BTREE;
 
 --
--- Indexes for table `barang_keluar`
+-- Indeks untuk tabel `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
   ADD PRIMARY KEY (`id_keluar`);
 
 --
--- Indexes for table `barang_masuk`
+-- Indeks untuk tabel `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
   ADD PRIMARY KEY (`id_masuk`);
 
 --
--- Indexes for table `detail_transaksi`
+-- Indeks untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `pelanggan`
+-- Indeks untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indexes for table `penjualan`
+-- Indeks untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id_penjualan`);
 
 --
--- Indexes for table `satuan`
+-- Indeks untuk tabel `satuan`
 --
 ALTER TABLE `satuan`
   ADD PRIMARY KEY (`id_satuan`);
 
 --
--- Indexes for table `supplier`
+-- Indeks untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`invoice`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_transaksi`
+-- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `pelanggan`
+-- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
   MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `penjualan`
+-- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- AUTO_INCREMENT for table `satuan`
+-- AUTO_INCREMENT untuk tabel `satuan`
 --
 ALTER TABLE `satuan`
   MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

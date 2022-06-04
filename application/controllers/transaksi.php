@@ -125,8 +125,7 @@ class Transaksi extends CI_Controller
             $this->modeltransaksi->simpan($data);
             $this->modeltransaksi->simpanDetail($invoice);
             $this->modeltransaksi->hapus();
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Transaksi Sukses<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('transaksi/selesai');
+            redirect('transaksi');
         }
     }
 

@@ -16,7 +16,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah User</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $this->ModelUser->cekData(['is_active' => 1])->num_rows(); ?></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $this->ModelUser->cekData(['is_active'])->num_rows(); ?></div>
             </div>
             <div class="col-auto">
               <a href="<?= base_url('user'); ?>" class="fas fa-users fa-2x text-gray-300"></a>
@@ -85,20 +85,17 @@
   <!-- Content Row -->
 
   <div class="row">
-
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
       <!-- Area Chart -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-dark">Data Transaksi Penjualan Warung Ali <?= date('Y'); ?></h6>
+          <h6 class="m-0 font-weight-bold text-dark">Data Transaksi Penjualan Warung Ali Tahun <?= date('Y'); ?></h6>
         </div>
         <div class="card-body">
           <div class="chart-area">
             <canvas id="myAreaChart"></canvas>
           </div>
-          <hr>
-          Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
         </div>
       </div>
     </div>
