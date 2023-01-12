@@ -49,10 +49,6 @@ git clone https://github.com/abdultalif/ka
 
 <img src="https://github.com/abdultalif/ka/blob/master/assets/dashboard.png" />
 
-## Halaman Login
-
-<img src="https://github.com/abdultalif/ka/blob/master/assets/login.png>
-
 ## Halaman Transaksi
 
 <img src="https://github.com/abdultalif/ka/blob/master/assets/transaksi.png" />
