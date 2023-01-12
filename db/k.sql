@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2022 pada 17.41
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.28
+-- Host: localhost
+-- Waktu pembuatan: 12 Jan 2023 pada 09.02
+-- Versi server: 5.7.33
+-- Versi PHP: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21102902', 'Lifeboy', 11, 1, '3000', 6),
 ('DB-21102903', 'Teh Gelas', 10, 10, '18000', 9),
 ('DB-21103101', 'Kopi Liong bulan', 10, 1, '1500', 1),
-('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 17),
+('DB-21103102', 'Kopi Liong bulan', 10, 11, '23000', 14),
 ('DB-21103103', 'Teh Sari Wangi', 10, 7, '10000', 6),
 ('DB-21103104', 'Evo Diplomat Biru 16btng', 12, 8, '16000', 2),
 ('DB-21103105', 'Evo Diplomat Biru 16btng - 10bks', 12, 9, '80500', 2),
@@ -56,7 +56,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21110802', 'Indomie Soto 40 bks', 9, 10, '97000', 5),
 ('DB-21111201', 'Kopi Kapal Api', 10, 1, '1500', 40),
 ('DB-21111202', 'Kopi Kapal Api', 10, 10, '98000', 3),
-('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 12),
+('DB-21111501', 'GGF Filter 12btng', 12, 8, '20000', 10),
 ('DB-21111502', 'Yupi Candy 24x192gr', 9, 10, '45000', 2),
 ('DB-21111503', 'Magnum Filter 12btng - 10bks', 12, 13, '167000', 2),
 ('DB-21111504', 'Samsu Kretek 12btng -10bks', 12, 13, '179500', 3),
@@ -68,7 +68,7 @@ INSERT INTO `barang` (`id_barang`, `barang`, `id_kategori`, `id_satuan`, `harga`
 ('DB-21111802', 'Envio Kretek 12btng', 12, 8, '16000', 16),
 ('DB-21111803', 'Teh Pucuk', 10, 10, '140000', 20),
 ('DB-21120501', 'Sampurna Mild 16btng-10bks', 12, 13, '250000', 5),
-('DB-21123101', 'Komik One Punch Man Volume 17', 7, 1, '24000', 20);
+('DB-21123101', 'Komik One Punch Man Volume 17', 7, 1, '24000', 18);
 
 -- --------------------------------------------------------
 
@@ -224,7 +224,10 @@ INSERT INTO `detail_transaksi` (`id_detail`, `invoice`, `id_barang`, `id_user`, 
 (67, 'PY-22051601014', 'DB-21103104', 1, 1, 16000),
 (68, 'PY-22051601015', 'DB-21111801', 1, 1, 300000),
 (69, 'PY-22051701011', 'DB-21111502', 1, 2, 90000),
-(70, 'PY-22051701011', 'DB-21111505', 1, 1, 374000);
+(70, 'PY-22051701011', 'DB-21111505', 1, 1, 374000),
+(71, 'PY-23011201011', 'DB-21103102', 1, 3, 69000),
+(72, 'PY-23011201011', 'DB-21111501', 1, 2, 40000),
+(74, 'PY-23011201012', 'DB-21123101', 1, 2, 48000);
 
 --
 -- Trigger `detail_transaksi`
@@ -302,6 +305,14 @@ CREATE TABLE `penjualan` (
   `jumlah` int(50) NOT NULL,
   `total` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjualan`
+--
+
+INSERT INTO `penjualan` (`id_penjualan`, `id_barang`, `id_user`, `jumlah`, `total`) VALUES
+(6, 'DB-21102901', 1, 2, 40000),
+(7, 'DB-21111505', 1, 1, 374000);
 
 -- --------------------------------------------------------
 
@@ -395,7 +406,9 @@ INSERT INTO `transaksi` (`invoice`, `id_pelanggan`, `id_user`, `total`, `bayar`,
 ('PY-22051601013', 2, 1, 336000, 350000, 14000, '2022-05-16', '13:54:40'),
 ('PY-22051601014', 2, 1, 16000, 17000, 1000, '2022-05-16', '13:59:10'),
 ('PY-22051601015', 5, 1, 300000, 300000, 0, '2022-05-16', '14:01:57'),
-('PY-22051701011', 6, 1, 464000, 500000, 36000, '2022-05-17', '14:21:00');
+('PY-22051701011', 6, 1, 464000, 500000, 36000, '2022-05-17', '14:21:00'),
+('PY-23011201011', 2, 1, 109000, 110000, 0, '2023-01-12', '14:27:33'),
+('PY-23011201012', 2, 1, 48000, 50000, 2000, '2023-01-12', '14:38:47');
 
 -- --------------------------------------------------------
 
@@ -420,9 +433,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `user`, `email`, `image`, `password`, `role_id`, `is_active`, `tanggal_input`) VALUES
 (1, 'Abdul Talif Parinduri', 'abdultalif85@gmail.com', 'avatar04.png', '$2y$10$.I8kX96a6z0K/Xq8/2.B4ulmAPt7GAD3iqdU8Be3L7iHDqZurYS/.', 'Kasir', 1, 1633425423),
-(22, 'Dwi Ayu Lestari', 'dwiayu@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 0, 1638662263),
-(23, 'Inez zakiyatunnisa', 'inez@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 0, 1640242780),
-(24, 'Jeremy Thimothy', 'jeremy@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551),
+(22, 'dedo', 'dedo@gmail.com', 'user5-128x128.jpg', '$2y$10$qHbPuF6hKBUBiitPiNPMAeKS7n72Hw7/UFnrNNgBPtL/WOVl4vCTm', 'Kasir', 0, 1638662263),
+(23, 'Talif', 'talif@gmail.com', 'default.jpg', '$2y$10$1.50xNPcP/PA3bOPBD31AOOb4i9PiTbMC1dkej4likvI60SpfXBf6', 'Admin', 1, 1640242780),
+(24, 'Abdul', 'abdul@gmail.com', 'avatar042.png', '$2y$10$opxa4rwHJ5hujqllAA8hfusfIKUO8KpjX3X1PIkfaS7tlc9KWkP62', 'Owner', 1, 1649396551),
 (25, 'Ryan Faturrahman', 'ryan@gmail.com', 'default.jpg', '$2y$10$FtAvfIpOhqNk9tkm2ijEOuaPB8cwra8Tc2LObrwvBUGGIq/zua4EK', 'Admin', 1, 1649665264),
 (26, 'Abdul Talif', 'abdultalif14@gmail.com', 'default.jpg', '$2y$10$qgx807h/sgpPo8Bd/oEE/O/kPJw0/GRSF34iDNG/1ktJ7IeBOpWdm', 'Admin', 1, 1652752828);
 
@@ -504,13 +517,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
@@ -522,7 +535,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `satuan`
