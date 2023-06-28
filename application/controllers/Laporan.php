@@ -12,45 +12,44 @@ class Laporan extends CI_Controller
 
     public function index()
     {
-        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
-        $data['judul'] = 'Laporan Penjualan';
-        $data['transaksi'] = $this->modelaporan->transaksi()->result_array();
-
-        $this->form_validation->set_rules('dari', 'Dari', 'required', [
-            'required' => 'From Tanggal Harus Di Isi'
-        ]);
-        $this->form_validation->set_rules('sampai', 'Sampai', 'required', [
-            'required' => 'From Tanggal Harus Di Isi'
-        ]);
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar');
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('laporan/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $datadari = $this->input->post('dari');
-            $datasampai = $this->input->post('sampai');
-            $data['judul'] = 'Laporan Transaksi';
-            $data['title'] = "Laporan Dari Tanggal : " . $datadari . " Sampai Tanggal : " . $datasampai;
-            $data['filterbytanggal'] = $this->modelaporan->filter($datadari, $datasampai)->result_array();
-            $filter = $this->modelaporan->filter($datadari, $datasampai)->result_array();
-
-            foreach ($filter as $f) {
-                $invoice = $f['invoice'];
-            }
-            $data['detail'] = $this->modelaporan->detailid($invoice)->result_array();
-
-
-            $this->load->library('pdf');
-            $paper_size = 'A3'; // ukuran kertas
-            $orientation = 'landscape'; //tipe format kertas potrait atau landscape
-            $this->pdf->set_paper($paper_size, $orientation);
-            $this->pdf->filename = "laporan-transaksi.pdf";
-            // nama file pdf yang di hasilkan
-            $this->pdf->load_view('laporan/print_transaksi', $data);
-        }
+        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['riwayat'] = $this->modelaporan->transaksi()->result_array();
+        $data['judul'] = 'Riwayat Transaksi Keseluruhan';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('laporan/index', $data);
+        $this->load->view('templates/footer');
     }
+
+    public function detail($id) {
+        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        $data['judul'] = 'Detail Transaksi';
+        $data['detail'] = $this->modelaporan->detailbyid($id)->row_array();
+        $data['detail_transaksi'] = $this->modelaporan->detailid($id)->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('laporan/detail', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function printbyid($invoice)
+    {
+        $data['judul'] = 'Kwitansi Transaksi';
+        $data['detail'] = $this->modelaporan->detailbyid($invoice)->row_array();
+        $data['detail_transaksi'] = $this->modelaporan->detailid($invoice)->result_array();
+        $data['d_transaksi'] = $this->modelaporan->detailid($invoice)->num_rows();
+        $this->load->library('pdf');
+        $paper_size = 'A6'; // ukuran kertas
+        $orientation = 'landscape'; //tipe format kertas potrait atau landscape
+        $this->pdf->set_paper($paper_size, $orientation);
+        $this->pdf->filename = "kwitansi-transaksi-$invoice.pdf";
+        // nama file pdf yang di hasilkan
+        $this->pdf->load_view('laporan/kwitansi', $data);
+    }
+
 
     public function stok()
     {

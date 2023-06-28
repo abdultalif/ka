@@ -89,7 +89,7 @@
 <footer class="sticky-footer bg-white mt-5">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <a href="https://www.instagram.com/abdullt85/" target="blank">Abdul Talif Parinduri</a> <?= date('Y'); ?></span>
+            <span>Copyright &copy; <a href="https://abdullt85.netlify.app/" target="_blank">Abdul Talif Parinduri</a> <?= date('Y'); ?></span>
         </div>
     </div>
 </footer>

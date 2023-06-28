@@ -44,13 +44,13 @@ class modelaporan extends CI_Model
 
     public function filtermasuk($dari, $sampai)
     {
-        $sql = "SELECT supplier.id_supplier, date_format(tanggal_masuk,'%d %M %Y') as tanggal_masuk, barang_masuk.id_supplier, user.id_user, barang_masuk.id_user, barang.id_barang, barang_masuk.id_barang, id_masuk, barang, nama, harga_beli, jumlah_masuk, satuan, total_harga, user From barang_masuk INNER JOIN supplier ON supplier.id_supplier = barang_masuk.id_supplier INNER JOIN user ON user.id_user = barang_masuk.id_user INNER JOIN barang ON barang.id_barang = barang_masuk.id_barang INNER JOIN satuan ON barang.id_satuan = satuan.id_satuan WHERE tanggal_masuk BETWEEN '$dari' AND '$sampai'";
+        $sql = "SELECT supplier.id_supplier, date_format(tanggal_masuk,'%d %M %Y') as tanggal_masuk, barang_masuk.id_supplier, user.id_user, barang_masuk.id_user, barang.id_barang, barang_masuk.id_barang, id_masuk, barang, nama, harga_beli, jumlah_masuk, satuan, total_harga, user From barang_masuk INNER JOIN supplier ON supplier.id_supplier = barang_masuk.id_supplier INNER JOIN user ON user.id_user = barang_masuk.id_user INNER JOIN barang ON barang.id_barang = barang_masuk.id_barang INNER JOIN satuan ON barang.id_satuan = satuan.id_satuan WHERE tanggal_masuk BETWEEN '$dari' AND '$sampai' ORDER BY id_masuk DESC";
         return $this->db->query($sql);
     }
 
     public function filterkeluar($dari, $sampai)
     {
-        $sql = "SELECT * From barang_keluar INNER JOIN user ON user.id_user = barang_keluar.id_user INNER JOIN barang ON barang.id_barang = barang_keluar.id_barang WHERE tanggal_keluar BETWEEN '$dari' AND '$sampai' ORDER BY tanggal_keluar ASC";
+        $sql = "SELECT * From barang_keluar INNER JOIN user ON user.id_user = barang_keluar.id_user INNER JOIN barang ON barang.id_barang = barang_keluar.id_barang WHERE tanggal_keluar BETWEEN '$dari' AND '$sampai' ORDER BY tanggal_keluar DESC";
         return $this->db->query($sql);
     }
 }
