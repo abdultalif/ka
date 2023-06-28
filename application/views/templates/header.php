@@ -18,6 +18,7 @@
 
   <!-- Custom styles for this page -->
   <link href="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- <link href="<?= base_url('assets/'); ?>vendor/datatables/datatables.min.css" rel="stylesheet"> -->
 
   <link rel="icon" href="<?= base_url('assets/'); ?>img/imagea.jpg">
 
