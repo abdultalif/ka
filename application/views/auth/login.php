@@ -11,7 +11,8 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Halaman Login!!</h1>
                                 </div>
-                                <?= $this->session->flashdata('pesan'); ?>
+                                <div class="pesan-error" data-error="<?= $this->session->flashdata('error'); ?>"></div>
+                                <div class="pesan-sukses" data-sukses="<?= $this->session->flashdata('sukses'); ?>"></div>
                                 <form class="user" method="post" action="<?= base_url('auth'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" value="<?= set_value('email'); ?>" id="email" placeholder="Masukkan Alamat Email" name="email">
@@ -36,6 +37,9 @@
                                     </button>
                                 </form>
                                 <hr>
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password.html">Lupa Password?</a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -27,19 +27,19 @@ class User extends CI_Controller
         if ($status == 1) {
             $active = 0;
             $this->ModelUser->update(['is_active' => $active], ['id_user' => $id]);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> User dinonaktifkan<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('sukses', 'User dinonaktifkan');
         } else {
             $active = 1;
             $this->ModelUser->update(['is_active' => $active], ['id_user' => $id]);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> User diaktifkan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('sukses', 'User diaktifkan');
         }
         redirect('user');
     }
-
+    
     public function hapususer($id)
     {
         $this->ModelUser->hapususer(['id_user' => $id]);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Success!</strong> User Berhasil Dihapus<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        $this->session->set_flashdata('sukses', 'User Berhasil Dihapus');
         redirect('user');
     }
 
@@ -95,7 +95,7 @@ class User extends CI_Controller
             }
 
             $this->ModelUser->editprofile($nama, $email);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Profile kamu berhasil di ubah<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('sukses', 'Profil Berhasil Diubah');
             redirect('user/myprofile');
         }
     }
@@ -128,7 +128,7 @@ class User extends CI_Controller
                 $this->db->set('password', $password_hash);
                 $this->db->where('email', $this->session->userdata('email'));
                 $this->db->update('user');
-                $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Password berhasil di ubah<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $this->session->set_flashdata('sukses', 'Password berhasil diubah');
                 redirect('user/changepassword');
             }
         }
@@ -161,7 +161,7 @@ class User extends CI_Controller
             ];
 
             $this->ModelUser->tambah($data);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Akun Berhasil Di Buat Silahkan Aktivasi<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('sukses', 'Akun Berhasil Di Buat Silahkan Aktivasi');
             redirect('user');
         }
     }
@@ -192,7 +192,7 @@ class User extends CI_Controller
             ];
 
             $this->ModelUser->update($data, ['id_user' => $id]);
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> User berhasil di ubah<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('sukses', 'Data user berhasil di ubah');
             redirect('user');
         }
     }

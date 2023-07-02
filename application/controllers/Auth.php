@@ -51,15 +51,15 @@ class Auth extends CI_Controller
                         redirect('kasir');
                     }
                 } else {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Error!</strong> Password Salah<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    $this->session->set_flashdata('error', 'Password Salah');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Error!</strong> Akun Belum Di Aktifasi!! Silahkan Hubungi admin<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $this->session->set_flashdata('error', 'Akun Belum Di Aktifasi!! Silahkan Hubungi Owner');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-icon alert-dismissible fade show"><strong>Error!</strong> Email Tidak Terdaftar<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('error', 'Email Tidak Terdaftar');
             redirect('auth');
         }
     }
@@ -68,8 +68,10 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('user');
 
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-icon alert-dismissible fade show"><strong>Success!</strong> Anda berhasil logout<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        $this->session->set_flashdata('sukses', 'Anda berhasil logout');
         redirect('auth');
     }
 }

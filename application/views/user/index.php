@@ -7,7 +7,7 @@
             <h5 class="m-0 font-weight-bold text-primary text-center">Data User</h5>
         </div>
         <div class="card-body">
-            <?= $this->session->flashdata('pesan'); ?>
+            <div class="pesan-sukses" data-sukses="<?= $this->session->flashdata('sukses'); ?>"></div>
             <a href="<?= base_url('user/tambah') ?>" class="btn btn-sm btn-primary mb-3 btn-icon-split">
                 <span class="icon">
                     <i class="fa fa-user-plus"></i>
@@ -51,7 +51,7 @@
                                         }
                                         ?>
                                         <a href="<?= base_url('user/ubahuser/') . $u['id_user']; ?>" class="badge badge-warning"><i class="fa fa-user-edit"></i></a>
-                                        <a href="<?= base_url('user/hapususer/') . $u['id_user']; ?>" class="badge badge-dark" onclick="return confirm('Hapus User <?= $u['user']; ?> ??')"><i class="fa fa-trash-alt"></i></a>
+                                        <a href="<?= base_url('user/hapususer/') . $u['id_user']; ?>" class="badge badge-dark" id="data-hapus"><i class="fa fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                         <?php

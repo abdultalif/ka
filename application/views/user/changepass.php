@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <?= $this->session->flashdata('pesan'); ?>
+                    <div class="pesan-sukses" data-sukses="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <form action="<?= base_url('user/changepassword'); ?>" method="post">
                         <div class="row form-group">
                             <label class="col-sm-3 col-form-label" for="nama">Current Password</label>

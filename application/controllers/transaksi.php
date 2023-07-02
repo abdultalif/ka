@@ -87,7 +87,7 @@ class Transaksi extends CI_Controller
                     alert("Stok <?= $barang; ?> kurang, stok hanya tersisa <?= $stok; ?>");
                     window.location.href = "<?= base_url('transaksi'); ?>";
                 </script>
-            <?php
+<?php
             }
         }
     }
@@ -105,12 +105,8 @@ class Transaksi extends CI_Controller
         $waktu = date("H:i:s");
 
         if ($total > $bayar) {
-            ?>
-            <script type="text/javascript">
-                alert("Uang Anda Kurang");
-                window.location.href = "<?= base_url('transaksi'); ?>";
-            </script>
-<?php
+            $this->session->set_flashdata('error', 'uang anda kurang');
+            redirect('transaksi');
         } else {
             $data = [
                 'invoice' => $invoice,
@@ -125,19 +121,10 @@ class Transaksi extends CI_Controller
             $this->modeltransaksi->simpan($data);
             $this->modeltransaksi->simpanDetail($invoice);
             $this->modeltransaksi->hapus();
+            // $this->session->set_flashdata('sukses', 'Transaksi Berhasil');
+            $this->printbyid($invoice);
             redirect('transaksi');
         }
-    }
-
-    public function selesai()
-    {
-        $data['judul'] = 'Transaksi Selesai';
-        $data['user'] = $this->ModelUser->cekData(['id_user' => $this->session->userdata('id_user')])->row_array();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('transaksi/selesai', $data);
-        $this->load->view('templates/footer');
     }
 
     public function detail($id)

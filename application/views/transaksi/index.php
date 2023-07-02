@@ -80,7 +80,8 @@
             </div>
         </div>
     </div>
-
+    <div class="pesan-error" data-error="<?= $this->session->flashdata('error'); ?>"></div>
+    <div class="pesan-sukses" data-sukses="<?= $this->session->flashdata('sukses'); ?>"></div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -145,7 +146,7 @@
                 </table>
 
                 <table class="table table-stripped mt-4">
-                    <form method="post" action="<?= base_url('transaksi/bayar'); ?>">
+                    <form method="post" id="form-bayar" action="<?= base_url('transaksi/bayar'); ?>">
                         <?php
                         foreach ($penjualan as $p) { ?>
                             <input type="hidden" name="id_barang" value="<?= $p['id_barang']; ?>">
@@ -182,7 +183,7 @@
                                 <input type="hidden" name="kode" value="<?= $kode; ?>">
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-success" onclick="return confirm('Apakah anda ingin melakukan transaksi ini ???')"><i class="fa fa-shopping-cart"></i> Bayar</button>
+                                <button type="submit" id="button-bayar" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Bayar</button>
                             </td>
                         </tr>
                     </form>

@@ -121,10 +121,101 @@
 <!-- Page level plugins -->
 <script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<!-- <script src="<?= base_url('assets/'); ?>vendor/datatables/datatables.min.js"></script> -->
+<script src="<?= base_url('assets/'); ?>vendor/sweetalert2/sweetalert2.min.js"></script>
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+
+
+<script>
+    if ($('.pesan-error').data('error')) {
+        const flashData = $('.pesan-error').data('error');
+        if (flashData) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: flashData,
+            })
+        }
+    } else {
+        const flashData = $('.pesan-sukses').data('sukses');
+        if (flashData) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: flashData,
+            })
+        }
+    }
+
+    $(document).on('click', '#data-hapus', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Data ini dihapus ?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Tidak',
+            confirmButtonText: 'Ya, Hapus'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        })
+    });
+
+    $(document).on('click', '#button-bayar', function(e) {
+        e.preventDefault();
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        Swal.fire({
+            title: 'Apakah anda ingin melakukan transaksi ini ?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Tidak',
+            confirmButtonText: 'Ya'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#form-bayar').submit();
+            }
+        })
+    })
+
+
+
+    $(document).on('click', '#logout', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Logout?',
+            text: "Apakah anda ingin Keluar??",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Tidak',
+            confirmButtonText: 'Ya, Saya ingin logout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+            }
+        })
+    });
+</script>
+
 
 <script type="text/javascript">
     // Set new default font family and font color to mimic Bootstrap's default styling
@@ -276,83 +367,50 @@
 </script>
 
 <script>
-//     $(document).ready(function() {
-//         $('#tabelkategori').DataTable();
-//     });
+    $('#tabeltransaksi').DataTable({
+        lengthMenu: [
+            [5, 10, 25, 50, 100, -1],
+            [5, 10, 25, 50, 100, 'ALL']
+        ],
+        responsive: true,
+        initComplete: function() {
+            this.api()
+                .columns([2, 3, 4])
+                .every(function() {
+                    var column = this;
+                    var title = column.footer().textContent;
 
-//     $('#tabeltransaksi').DataTable({
-//     initComplete: function () {
-//         this.api()
-//             .columns()
-//             .every(function () {
-//                 var column = this;
- 
-//                 // Create select element and listener
-//                 var select = $('<select class="form-control"><option value=""></option></select>')
-//                     .appendTo($(column.footer()).empty())
-//                     .on('change', function () {
-//                         var val = DataTable.util.escapeRegex($(this).val());
- 
-//                         column.search(val ? '^' + val + '$' : '', true, false).draw();
-//                     });
- 
-//                 // Add list of options
-//                 column
-//                     .data()
-//                     .unique()
-//                     .sort()
-//                     .each(function (d, j) {
-//                         select.append('<option value="' + d + '">' + d + '</option>');
-//                     });
-//             });
-//     },
-// });
+                    // Create input element and add event listener
+                    $('<input type="text" class="form-control" placeholder="Search ' + title + '" />')
+                        .appendTo($(column.footer()).empty())
+                        .on('keyup change clear', function() {
+                            if (column.search() !== this.value) {
+                                column.search(this.value).draw();
+                            }
+                        });
+                });
+        },
+        "language": {
+            "lengthMenu": "_MENU_ baris perhalaman",
+            "search": "Cari:",
+            "zeroRecords": "Belum Ada Data",
+            "info": "Halaman _PAGE_ dari _PAGES_",
+            "infoEmpty": "Data Masih Kosong",
+            "infoFiltered": "(Disaring dari _MAX_ total data)",
+            "paginate": {
 
+                "first": "«",
 
-$('#tabeltransaksi').DataTable({
-    lengthMenu: [
-                [5, 10, 25, 50, 100, -1],
-                [5, 10, 25, 50, 100, 'ALL']
-            ],
-            responsive: true,
-            initComplete: function() {
-                this.api()
-                    .columns([2, 3, 4])
-            .every(function () {
-                var column = this;
-                var title = column.footer().textContent;
- 
-                // Create input element and add event listener
-                $('<input type="text" class="form-control" placeholder="Search ' + title + '" />')
-                    .appendTo($(column.footer()).empty())
-                    .on('keyup change clear', function () {
-                        if (column.search() !== this.value) {
-                            column.search(this.value).draw();
-                        }
-                    });
-            });
+                "last": "»",
+
+                "next": "›",
+
+                "previous": "‹"
+
             },
-            "language": {
-                "lengthMenu": "_MENU_ baris perhalaman",
-                "search": "Cari:",
-                "zeroRecords": "Belum Ada Data",
-                "info": "Halaman _PAGE_ dari _PAGES_",
-                "infoEmpty": "Data Masih Kosong",
-                "infoFiltered": "(Disaring dari _MAX_ total data)",
-                "paginate": {
 
-                    "first": "«",
-
-                    "last": "»",
-
-                    "next": "›",
-
-                    "previous": "‹"
-
-                },
-
-            }
-        });
+        }
+    });
 
     $(document).ready(function() {
         $('#tabelsatuan').DataTable();
